@@ -18,6 +18,7 @@ void ReadFile(double** &nodes, int &size, string fileName) {
 		getline(in, line);
 		istringstream stream(line);
 
+		stream >> size;
 		nodes = new double* [size];
 		
 		for (int i = 0; i < size; i++) {
@@ -45,7 +46,7 @@ void ReadFile(double** &nodes, int &size, string fileName) {
 //	
 //	ReadFile(nodes, filename);
 //	
-//	cout <<"Кол-во узлов: " << nodes.size()<<"\n\n";
+//	cout <<"ГЉГ®Г«-ГўГ® ГіГ§Г«Г®Гў: " << nodes.size()<<"\n\n";
 //
 //	for (int i = 0; i < 4; i++) {
 //		cout << "xyz: ";
@@ -65,12 +66,12 @@ void ReadFile(double** &nodes, int &size, string fileName) {
 //	cout << endl;
 //	cout << "V = " << V(nodes) << endl;
 //
-//	cout << "\n Коиффиеценты:\n";
+//	cout << "\n ГЉГ®ГЁГґГґГЁГҐГ¶ГҐГ­ГІГ»:\n";
 //	for (int i = 0; i < 4; i++) {
 //		cout << a(nodes, i) <<" "<< b(nodes, i) << " " << c(nodes, i) << " " << d(nodes, i) << endl;
 //	} cout << endl;
 //
-//	cout << "\n Матрица 12х9:\n";
+//	cout << "\n ГЊГ ГІГ°ГЁГ¶Г  12Гµ9:\n";
 //	vector<vector<double>> test = dN_Node(nodes);
 //	for (int i = 0; i < test.size(); i++) {
 //		for (int j = 0; j < test[i].size(); j++) {
@@ -95,7 +96,7 @@ void ReadFile(double** &nodes, int &size, string fileName) {
 //		cout << endl;
 //	}cout << endl;
 //
-//	cout << "\ Транспонированная матрциа:\n";
+//	cout << "\ Г’Г°Г Г­Г±ГЇГ®Г­ГЁГ°Г®ГўГ Г­Г­Г Гї Г¬Г ГІГ°Г¶ГЁГ :\n";
 //	for (int i = 0; i < testT.size(); i++) {
 //		for (int j = 0; j < testT[i].size(); j++) {
 //			cout << testT[i][j] << " ";
@@ -104,7 +105,7 @@ void ReadFile(double** &nodes, int &size, string fileName) {
 //	}cout << endl;
 //
 //	vector<vector<double>> prodTest = product(test, testT);
-//	cout << "\n Произведение (Матрица 12х12):\n";
+//	cout << "\n ГЏГ°Г®ГЁГ§ГўГҐГ¤ГҐГ­ГЁГҐ (ГЊГ ГІГ°ГЁГ¶Г  12Гµ12):\n";
 //	for (int i = 0; i < prodTest.size(); i++) {
 //		for (int j = 0; j < prodTest[i].size(); j++) {
 //			cout << prodTest[i][j] << " ";
@@ -116,10 +117,10 @@ void ReadFile(double** &nodes, int &size, string fileName) {
 //}
 
 
-// 1) Задать 15 функций (15 слогаемых)
-// 2) Проверка по файлу (EXCEL)
-// 3) Создать массив [элемент -> узел]
-// 4) Проссумировать слогаемые 
+// 1) Г‡Г Г¤Г ГІГј 15 ГґГіГ­ГЄГ¶ГЁГ© (15 Г±Г«Г®ГЈГ ГҐГ¬Г»Гµ)
+// 2) ГЏГ°Г®ГўГҐГ°ГЄГ  ГЇГ® ГґГ Г©Г«Гі (EXCEL)
+// 3) Г‘Г®Г§Г¤Г ГІГј Г¬Г Г±Г±ГЁГў [ГЅГ«ГҐГ¬ГҐГ­ГІ -> ГіГ§ГҐГ«]
+// 4) ГЏГ°Г®Г±Г±ГіГ¬ГЁГ°Г®ГўГ ГІГј Г±Г«Г®ГЈГ ГҐГ¬Г»ГҐ 
 
 int main() {
 	setlocale(LC_ALL, "ru");
@@ -141,7 +142,7 @@ int main() {
 	fileName = "input.txt";
 	ReadFile(nodes, sizeNodes, fileName);
 
-	// B - Матрица производных
+	// B - ГЊГ ГІГ°ГЁГ¶Г  ГЇГ°Г®ГЁГ§ГўГ®Г¤Г­Г»Гµ
 	B = new double*** [nodesInElement];
 	for (int i = 0; i < nodesInElement; i++) {
 
@@ -151,10 +152,10 @@ int main() {
 		}
 	}
 
-	//S - Матрица (...)
+	//S - ГЊГ ГІГ°ГЁГ¶Г  (...)
 	S = CreateS();
 
-	//K - матрица жёсткости
+	//K - Г¬Г ГІГ°ГЁГ¶Г  Г¦ВёГ±ГІГЄГ®Г±ГІГЁ
 	K = K_Loc(B, S);
 	
 	for (int I = 0; I < nodesInElement; I++) {
