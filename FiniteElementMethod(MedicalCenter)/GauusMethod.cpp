@@ -140,6 +140,9 @@ double ConditionNumber(double** matrix, int size, bool change) {
 
 	return Answer;
 }
+
+
+
 void Gauss(double** matrix, int Size, double* X, double &Det, double** invers_matrix, double Condition) {
 	matrix = new double* [Size];
 	for (int i = 0; i < Size; i++) {

@@ -1,5 +1,7 @@
 #pragma once
 
+void Gauss(double** matrix, int Size, double* X);
+
 void Generation(double**,int, int);
 void SwapLine(double**, int, int);
 double* UpTriangl(double**, int);

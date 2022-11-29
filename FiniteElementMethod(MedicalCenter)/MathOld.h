@@ -300,9 +300,3 @@ vector<vector<double>> T(vector<vector<double>> &A) {
 
     return result;
 }
-
-
-
-
-
-

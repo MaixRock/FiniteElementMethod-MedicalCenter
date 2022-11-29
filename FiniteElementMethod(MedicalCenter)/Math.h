@@ -6,6 +6,11 @@ const int nodesInElement = 4; //Число узлов для одного элемента
 const int numberCoordinates = 3; //Число координат в узле
 
 using namespace std;
+
+struct Element {
+    double** nodes;
+};
+
 // ----------------- Определитель ---------------- //
 // Вычисляет определитель матрицы T размерностью N                               
 double det(double** T, uint32_t N)
@@ -307,7 +312,7 @@ double**** K_Loc(double**** B, double** S) {
 }
 
 //---------------- Матрицы -----------------//
-double** CreateS() {
+double** CreateS(int start) {
 
     int size = numberCoordinates;
 
@@ -316,7 +321,7 @@ double** CreateS() {
         S[i] = new double[size];
     }
 
-    double res = 0;
+    double res = start;
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             res += 100;
@@ -325,4 +330,26 @@ double** CreateS() {
     }
 
     return S;
+}
+
+bool checkNode(Element &elmnt, double* &node) {
+
+    for (int i = 0; i < nodesInElement; i++) {
+        if (elmnt.nodes[i] == node) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+int getIndex(Element& elmnt, double*& node) {
+
+    for (int i = 0; i < nodesInElement; i++) {
+        if (elmnt.nodes[i] == node) {
+            return i;
+        }
+    }
+
+    return -1;
 }
